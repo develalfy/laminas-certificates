@@ -35,10 +35,25 @@ return [
             'certificate' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/certificate[/:action]',
+                    'route'    => '/certificate',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'show' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/[:isin]',
+                            'defaults' => [
+                                'action' => 'show',
+                            ],
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]+',
+                            ],
+                        ],
                     ],
                 ],
             ],

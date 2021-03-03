@@ -49,9 +49,9 @@ class StandardCertificate implements CertificateInterface
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getIsin(): int
+    public function getIsin(): string
     {
         return $this->isin;
     }

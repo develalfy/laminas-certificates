@@ -11,11 +11,22 @@
     <div class="card">
         <h2 class="card-header">Certificates</h2>
         <div class="card-body">
-
             <p>
-                <?= var_dump($this->certificates);die(); ?>
-            </p>
+                <? foreach ($this->certificates as $certificate): ?>
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            <a href="<?= $this->url('certificate/show', ['isin' => $certificate->getIsin()]) ?>">
+                                <?= $certificate->getIsin() ?>
+                            </a>
+                        </h4>
 
+                        <div class="btn-group" role="group" aria-label="Post actions">
+<!--                            <a class="btn btn-xs btn-default" href="--><?//= $this->url('blog/edit', ['id' => $certificate->getIsin()]) ?><!--">Edit</a>-->
+<!--                            <a class="btn btn-xs btn-danger" href="--><?//= $this->url('blog/delete', ['id' => $certificate->getIsin()]) ?><!--">Delete</a>-->
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </p>
         </div>
     </div>
 </div>

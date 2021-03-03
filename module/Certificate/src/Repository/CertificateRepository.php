@@ -5,6 +5,7 @@ namespace Certificate\Repository;
 
 
 use Certificate\Model\BonusCertificate;
+use Certificate\Model\CertificateInterface;
 use Certificate\Model\Currency;
 use Certificate\Model\CurrentPrice;
 use Certificate\Model\GuaranteeCertificate;
@@ -16,21 +17,22 @@ use Certificate\Model\TradingMarket;
 class CertificateRepository implements CertificateRepositoryInterface
 {
     /**
+     * @param null $isin
      * @return array
      */
-    public function getAllCertificates(): array
+    private function getData($isin = null): array
     {
         return [
-            new StandardCertificate(
-                'CODE-123456789',
+            'CODE-1000' => new StandardCertificate(
+                'CODE-1000',
                 new TradingMarket(),
                 new Currency(),
                 new Issuer(),
                 new IssuingPrice(),
                 new CurrentPrice()
             ),
-            new BonusCertificate(
-                'CODE-123456789',
+            'CODE-2000' => new BonusCertificate(
+                'CODE-2000',
                 new TradingMarket(),
                 new Currency(),
                 new Issuer(),
@@ -38,8 +40,8 @@ class CertificateRepository implements CertificateRepositoryInterface
                 new CurrentPrice(),
                 12.99
             ),
-            new GuaranteeCertificate(
-                'CODE-123456789',
+            'CODE-3000' => new GuaranteeCertificate(
+                'CODE-3000',
                 new TradingMarket(),
                 new Currency(),
                 new Issuer(),
@@ -48,5 +50,22 @@ class CertificateRepository implements CertificateRepositoryInterface
                 5
             ),
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllCertificates(): array
+    {
+        return $this->getData();
+    }
+
+    /**
+     * @param string $id
+     * @return CertificateInterface
+     */
+    public function getCertificate(string $id): CertificateInterface
+    {
+        return $this->getData()[$id];
     }
 }

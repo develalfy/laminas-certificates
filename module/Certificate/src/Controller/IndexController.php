@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Certificate\Controller;
 
 use Certificate\Service\CertificateService;
+use InvalidArgumentException;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
@@ -27,10 +28,23 @@ class IndexController extends AbstractActionController
         $this->certificateService = $certificateService;
     }
 
-    public function indexAction(): ViewModel
+    public function indexAction()
     {
         $certificates = $this->certificateService->getAllCertificates();
 
         return new ViewModel(['certificates' => $certificates]);
+    }
+
+    public function showAction()
+    {
+        $id = $this->params()->fromRoute('isin');
+
+        try {
+            $certificate = $this->certificateService->getCertificate($id);
+        } catch (\TypeError $e) {
+            return $this->redirect()->toRoute('certificate');
+        }
+
+        return new ViewModel(['certificate' => $certificate]);
     }
 }

@@ -4,6 +4,7 @@
 namespace Certificate\Service;
 
 
+use Certificate\Model\CertificateInterface;
 use Certificate\Repository\CertificateRepositoryInterface;
 
 class CertificateService
@@ -21,9 +22,13 @@ class CertificateService
     /**
      * @return array
      */
-    public function getAllCertificates():array
+    public function getAllCertificates(): array
     {
-        //todo: business logic goes here
         return $this->certificateRepository->getAllCertificates();
+    }
+
+    public function getCertificate(string $id): CertificateInterface
+    {
+        return $this->certificateRepository->getCertificate($id);
     }
 }
