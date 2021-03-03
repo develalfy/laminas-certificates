@@ -42,6 +42,16 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertMatchedRouteName('home');
     }
 
+    public function testShowActionCanBeAccessed()
+    {
+        $this->dispatch('/certificate/CODE-1000/html', 'GET');
+        $this->assertResponseStatusCode(200);
+        $this->assertModuleName('Certificate');
+        $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
+        $this->assertControllerClass('IndexController');
+        $this->assertMatchedRouteName('certificate/html');
+    }
+
     public function testIndexActionViewModelTemplateRenderedWithinLayout()
     {
         $this->dispatch('/', 'GET');

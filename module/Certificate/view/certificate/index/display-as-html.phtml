@@ -50,22 +50,22 @@
         <h4 class="border-bottom border-dark pb-2 mb-0">Issuing Price</h4>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Amount<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['issuing_price']->getAmount()) ?></strong>
+                Amount<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getAmount()) ?></strong>
             </p>
         </div>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['issuing_price']->getCurrency()->getName()) ?></strong>
+                Currency Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getCurrency()->getName()) ?></strong>
             </p>
         </div>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Symbol<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['issuing_price']->getCurrency()->getSymbol()) ?></strong>
+                Currency Symbol<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getCurrency()->getSymbol()) ?></strong>
             </p>
         </div>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Date/Time<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['issuing_price']->getTimestamp()) ?></strong>
+                Date/Time<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getTimestamp()) ?></strong>
             </p>
         </div>
     </div>
@@ -74,22 +74,22 @@
         <h4 class="border-bottom border-dark pb-2 mb-0">Current Price</h4>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Amount<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['current_price']->getAmount()) ?></strong>
+                Amount<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getAmount()) ?></strong>
             </p>
         </div>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['current_price']->getCurrency()->getName()) ?></strong>
+                Currency Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getCurrency()->getName()) ?></strong>
             </p>
         </div>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Symbol<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['current_price']->getCurrency()->getSymbol()) ?></strong>
+                Currency Symbol<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getCurrency()->getSymbol()) ?></strong>
             </p>
         </div>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Date/Time<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getPrices()['current_price']->getTimestamp()) ?></strong>
+                Date/Time<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getTimestamp()) ?></strong>
             </p>
         </div>
     </div>
