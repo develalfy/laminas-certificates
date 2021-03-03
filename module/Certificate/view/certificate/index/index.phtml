@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-    <? foreach ($this->certificates as $certificate): ?>
+    <?php foreach ($this->certificates as $certificate): ?>
         <div class="col-md-4">
             <h2 class="card-header"><?= $certificate->getIsin() ?></h2>
             <div class="card-body">
@@ -26,5 +26,5 @@
                 </p>
             </div>
         </div>
-    <?php endforeach; ?>
+    <?php endforeach ?>
 </div>

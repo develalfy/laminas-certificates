@@ -24,10 +24,9 @@ class CertificateRepository implements CertificateRepositoryInterface
     }
 
     /**
-     * @param null $isin
      * @return array
      */
-    private function getData($isin = null): array
+    private function getData(): array
     {
         return [
             'CODE-1000' => new StandardCertificate(

@@ -27,6 +27,10 @@ class CertificateService
         return $this->certificateRepository->getAllCertificates();
     }
 
+    /**
+     * @param string $id
+     * @return CertificateInterface
+     */
     public function getCertificate(string $id): CertificateInterface
     {
         return $this->certificateRepository->getCertificate($id);
