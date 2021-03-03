@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CertificateTest\Model;
+namespace Certificate\Model;
 
 
 class StandardCertificate implements CertificateInterface

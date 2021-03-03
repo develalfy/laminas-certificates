@@ -12,14 +12,14 @@ namespace CertificateTest\Service;
 
 use Certificate\Repository\CertificateRepository;
 use Certificate\Service\CertificateService;
-use CertificateTest\Model\BonusCertificate;
-use CertificateTest\Model\Currency;
-use CertificateTest\Model\CurrentPrice;
-use CertificateTest\Model\GuaranteeCertificate;
-use CertificateTest\Model\Issuer;
-use CertificateTest\Model\IssuingPrice;
-use CertificateTest\Model\StandardCertificate;
-use CertificateTest\Model\TradingMarket;
+use Certificate\Model\BonusCertificate;
+use Certificate\Model\Currency;
+use Certificate\Model\CurrentPrice;
+use Certificate\Model\GuaranteeCertificate;
+use Certificate\Model\Issuer;
+use Certificate\Model\IssuingPrice;
+use Certificate\Model\StandardCertificate;
+use Certificate\Model\TradingMarket;
 use Laminas\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class CertificateServiceTest extends AbstractHttpControllerTestCase
@@ -75,6 +75,6 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
 
         $actual = $this->certificateService->getAllCertificates();
 
-        $this->assertEquals($certificateDate, $actual);
+        $this->assertSame($certificateDate, $actual);
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
 
-namespace CertificateTest\Model;
+namespace Certificate\Model;
 
 
-class GuaranteeCertificate extends StandardCertificate
+class BonusCertificate extends StandardCertificate
 {
     /**
      * @var float
      */
-    private $participationRate;
+    private $barrierLevel;
 
     public function __construct(
         string $isin,
@@ -18,10 +18,10 @@ class GuaranteeCertificate extends StandardCertificate
         Issuer $issuer,
         IssuingPrice $issuingPrice,
         CurrentPrice $currentPrice,
-        int $participationRate
+        float $barrierLevel
     )
     {
         parent::__construct($isin, $tradingMarket, $currency, $issuer, $issuingPrice, $currentPrice);
-        $this->participationRate = $participationRate;
+        $this->barrierLevel = $barrierLevel;
     }
 }
