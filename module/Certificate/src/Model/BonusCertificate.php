@@ -16,11 +16,11 @@ class BonusCertificate extends StandardCertificate
         TradingMarket $tradingMarket,
         Currency $currency,
         Issuer $issuer,
-        Price $currentPrice,
+        array $prices,
         float $barrierLevel
     )
     {
-        parent::__construct($isin, $tradingMarket, $currency, $issuer, $currentPrice);
+        parent::__construct($isin, $tradingMarket, $currency, $issuer, $prices);
         $this->barrierLevel = $barrierLevel;
     }
 }

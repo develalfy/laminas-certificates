@@ -22,24 +22,25 @@ class StandardCertificate implements CertificateInterface
      * @var Issuer
      */
     private $issuer;
+
     /**
-     * @var Price
+     * @var array
      */
-    private $price;
+    private $prices;
 
     public function __construct(
         string $isin,
         TradingMarket $tradingMarket,
         Currency $currency,
         Issuer $issuer,
-        Price $price
+        array $prices
     )
     {
         $this->isin = $isin;
         $this->tradingMarket = $tradingMarket;
         $this->currency = $currency;
         $this->issuer = $issuer;
-        $this->price = $price;
+        $this->prices = $prices;
     }
 
     /**
@@ -107,18 +108,18 @@ class StandardCertificate implements CertificateInterface
     }
 
     /**
-     * @return Price
+     * @return array
      */
-    public function getPrice(): Price
+    public function getPrices(): array
     {
-        return $this->price;
+        return $this->prices;
     }
 
     /**
-     * @param Price $price
+     * @param array $prices
      */
-    public function setPrice(Price $price): void
+    public function setPrices(array $prices): void
     {
-        $this->price = $price;
+        $this->prices = $prices;
     }
 }
