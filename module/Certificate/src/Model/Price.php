@@ -4,7 +4,7 @@
 namespace Certificate\Model;
 
 
-class IssuingPrice
+class Price
 {
     /**
      * @var float

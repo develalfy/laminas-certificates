@@ -24,12 +24,12 @@
 
                 <p>
                     <a class="btn btn-primary"
-                       href="<?= $this->url('certificate/show', ['isin' => $certificate->getIsin()]) ?>"
+                       href="<?= $this->url('certificate/html', ['isin' => $certificate->getIsin()]) ?>"
                        target="_blank">
                         HTML &raquo;
                     </a>
                     <a class="btn btn-danger"
-                       href="<?= $this->url('certificate/show', ['isin' => $certificate->getIsin()]) ?>"
+                       href="<?= $this->url('certificate/xml', ['isin' => $certificate->getIsin()]) ?>"
                        target="_blank">
                         XML &raquo;
                     </a>

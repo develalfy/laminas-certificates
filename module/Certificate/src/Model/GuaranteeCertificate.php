@@ -16,12 +16,11 @@ class GuaranteeCertificate extends StandardCertificate
         TradingMarket $tradingMarket,
         Currency $currency,
         Issuer $issuer,
-        IssuingPrice $issuingPrice,
-        CurrentPrice $currentPrice,
+        Price $currentPrice,
         int $participationRate
     )
     {
-        parent::__construct($isin, $tradingMarket, $currency, $issuer, $issuingPrice, $currentPrice);
+        parent::__construct($isin, $tradingMarket, $currency, $issuer, $currentPrice);
         $this->participationRate = $participationRate;
     }
 }

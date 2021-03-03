@@ -15,6 +15,7 @@ use Certificate\Factory\IndexControllerFactory;
 use Certificate\Repository\CertificateRepository;
 use Certificate\Repository\CertificateRepositoryInterface;
 use Certificate\Service\CertificateService;
+use Certificate\Service\RendererService;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
@@ -43,12 +44,24 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'show' => [
+                    'html' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route' => '/[:isin]',
+                            'route' => '/[:isin]/html',
                             'defaults' => [
-                                'action' => 'show',
+                                'action' => 'displayAsHtml',
+                            ],
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]+',
+                            ],
+                        ],
+                    ],
+                    'xml' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/[:isin]/xml',
+                            'defaults' => [
+                                'action' => 'displayAsXml',
                             ],
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]+',
@@ -65,6 +78,7 @@ return [
         ],
         'factories' => [
             CertificateService::class => CertificateServiceFactory::class,
+            RendererService::class => InvokableFactory::class,
             CertificateRepository::class => InvokableFactory::class,
         ],
     ],

@@ -14,7 +14,7 @@ use Certificate\Repository\CertificateRepository;
 use Certificate\Service\CertificateService;
 use Certificate\Model\BonusCertificate;
 use Certificate\Model\Currency;
-use Certificate\Model\CurrentPrice;
+use Certificate\Model\Price;
 use Certificate\Model\GuaranteeCertificate;
 use Certificate\Model\Issuer;
 use Certificate\Model\IssuingPrice;
@@ -46,7 +46,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Currency(),
                 new Issuer(),
                 new IssuingPrice(),
-                new CurrentPrice()
+                new Price()
             ),
             new BonusCertificate(
                 'CODE-99665',
@@ -54,7 +54,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Currency(),
                 new Issuer(),
                 new IssuingPrice(),
-                new CurrentPrice(),
+                new Price(),
                 88.99
             ),
             new GuaranteeCertificate(
@@ -63,7 +63,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Currency(),
                 new Issuer(),
                 new IssuingPrice(),
-                new CurrentPrice(),
+                new Price(),
                 9
             ),
         ];
