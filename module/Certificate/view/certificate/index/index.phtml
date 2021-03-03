@@ -7,26 +7,34 @@
     <h1 class="display-4">Welcome to<br>Our Certificates Project</h1>
 </div>
 
-<div class="card-deck">
-    <div class="card">
-        <h2 class="card-header">Certificates</h2>
-        <div class="card-body">
-            <p>
-                <? foreach ($this->certificates as $certificate): ?>
-                    <div class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                            <a href="<?= $this->url('certificate/show', ['isin' => $certificate->getIsin()]) ?>">
-                                <?= $certificate->getIsin() ?>
-                            </a>
-                        </h4>
+<div class="row">
+    <? foreach ($this->certificates as $certificate): ?>
+        <div class="col-md-4">
+            <h2 class="card-header"><?= $certificate->getIsin() ?></h2>
+            <div class="card-body">
+                <p>
+                    Laminas Project is under active development. If you are
+                    interested in following the development, you can check
+                    <a href="https://getlaminas.org/blog/">Laminas dev blog</a>,
+                    and <a href="https://github.com/issues?utf8=%E2%9C%93&amp;q=is:issue+org:laminas">Laminas issue
+                        tracker</a>
+                    (link requires a GitHub account). This is a great resource
+                    for staying up to date with the latest developments!
+                </p>
 
-                        <div class="btn-group" role="group" aria-label="Post actions">
-<!--                            <a class="btn btn-xs btn-default" href="--><?//= $this->url('blog/edit', ['id' => $certificate->getIsin()]) ?><!--">Edit</a>-->
-<!--                            <a class="btn btn-xs btn-danger" href="--><?//= $this->url('blog/delete', ['id' => $certificate->getIsin()]) ?><!--">Delete</a>-->
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </p>
+                <p>
+                    <a class="btn btn-primary"
+                       href="<?= $this->url('certificate/show', ['isin' => $certificate->getIsin()]) ?>"
+                       target="_blank">
+                        HTML &raquo;
+                    </a>
+                    <a class="btn btn-danger"
+                       href="<?= $this->url('certificate/show', ['isin' => $certificate->getIsin()]) ?>"
+                       target="_blank">
+                        XML &raquo;
+                    </a>
+                </p>
+            </div>
         </div>
-    </div>
+    <?php endforeach; ?>
 </div>
