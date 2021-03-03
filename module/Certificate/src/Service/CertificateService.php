@@ -4,16 +4,16 @@
 namespace Certificate\Service;
 
 
-use Certificate\Repository\CertificateRepository;
+use Certificate\Repository\CertificateRepositoryInterface;
 
 class CertificateService
 {
     /**
-     * @var CertificateRepository
+     * @var CertificateRepositoryInterface
      */
     private $certificateRepository;
 
-    public function __construct(CertificateRepository $certificateRepository)
+    public function __construct(CertificateRepositoryInterface $certificateRepository)
     {
         $this->certificateRepository = $certificateRepository;
     }
@@ -23,6 +23,7 @@ class CertificateService
      */
     public function getAllCertificates():array
     {
+        //todo: business logic goes here
         return $this->certificateRepository->getAllCertificates();
     }
 }

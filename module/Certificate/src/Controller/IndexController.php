@@ -10,18 +10,27 @@ declare(strict_types=1);
 
 namespace Certificate\Controller;
 
+use Certificate\Service\CertificateService;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+
+    /**
+     * @var CertificateService
+     */
+    private $certificateService;
+
+    public function __construct(CertificateService $certificateService)
+    {
+        $this->certificateService = $certificateService;
+    }
+
     public function indexAction(): ViewModel
     {
-        $data = [
-            'name' => 'Ashraf Elalfi',
-            'age' => 27,
-        ];
+        $certificates = $this->certificateService->getAllCertificates();
 
-        return new ViewModel($data);
+        return new ViewModel(['certificates' => $certificates]);
     }
 }

@@ -10,6 +10,11 @@ declare(strict_types=1);
 
 namespace Certificate;
 
+use Certificate\Factory\CertificateServiceFactory;
+use Certificate\Factory\IndexControllerFactory;
+use Certificate\Repository\CertificateRepository;
+use Certificate\Repository\CertificateRepositoryInterface;
+use Certificate\Service\CertificateService;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
@@ -39,9 +44,18 @@ return [
             ],
         ],
     ],
+    'service_manager' => [
+        'aliases' => [
+            CertificateRepositoryInterface::class => CertificateRepository::class,
+        ],
+        'factories' => [
+            CertificateService::class => CertificateServiceFactory::class,
+            CertificateRepository::class => InvokableFactory::class,
+        ],
+    ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\IndexController::class => IndexControllerFactory::class,
         ],
     ],
     'view_manager' => [
