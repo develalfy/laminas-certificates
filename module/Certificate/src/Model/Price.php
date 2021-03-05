@@ -19,7 +19,7 @@ class Price
      */
     private $timestamp;
 
-    public function __construct(float $amount, Currency $currency, string $timestamp)
+    public function __construct(float $amount, Currency $currency, int $timestamp)
     {
         $this->amount = $amount;
         $this->currency = $currency;

@@ -66,14 +66,11 @@ class IndexController extends AbstractActionController
         } catch (\TypeError $e) {
             return $this->redirect()->toRoute('certificate');
         }
-
-        $this->layout()->setTerminal(true);
-
-//        var_dump($view);die();
-
-        $xml = $this->rendererService->displayAsXml($certificate);
-        return new XmlResponse($xml, 404, [
-            'Content-Type' => [ 'application/xhtml+xml' ],
+        $xmlData = $this->rendererService->displayAsXml($certificate);
+        $this->response->getHeaders()->addHeaders([
+            'Content-Type' => 'text/xml; charset=utf-8'
         ]);
+
+        return $this->response->setContent($xmlData);
     }
 }
