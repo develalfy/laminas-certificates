@@ -143,4 +143,9 @@ class StandardCertificate implements CertificateInterface
     {
         $this->currentPrice = $currentPrice;
     }
+
+    public function addPrice(array $priceArray): Price
+    {
+        return new Price($priceArray);
+    }
 }

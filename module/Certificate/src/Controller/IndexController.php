@@ -12,7 +12,11 @@ namespace Certificate\Controller;
 
 use Certificate\Service\CertificateService;
 use Certificate\Service\RendererService;
+use Laminas\Diactoros\Response\EmptyResponse;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\XmlResponse;
 use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
 use Laminas\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
@@ -63,6 +67,13 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('certificate');
         }
 
-        return $this->rendererService->displayAsXml($certificate);
+        $this->layout()->setTerminal(true);
+
+//        var_dump($view);die();
+
+        $xml = $this->rendererService->displayAsXml($certificate);
+        return new XmlResponse($xml, 404, [
+            'Content-Type' => [ 'application/xhtml+xml' ],
+        ]);
     }
 }
