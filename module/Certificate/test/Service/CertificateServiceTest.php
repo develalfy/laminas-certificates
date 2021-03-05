@@ -98,7 +98,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Currency('USD Dollar', '$'),
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1578089487),
-                new Price(200.55, new Currency('USD Dollar', '$'), 1578009487)
+                new Price(200.55, new Currency('USD Dollar', '$'), 1578002487)
             )
         ];
     }

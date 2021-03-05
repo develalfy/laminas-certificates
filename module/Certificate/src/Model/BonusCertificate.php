@@ -36,6 +36,15 @@ class BonusCertificate extends StandardCertificate
         {
             $this->isBarrierLevelHit = true;
         }
+
         return parent::addPrice($price);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBarrierLevelHit(): bool
+    {
+        return $this->isBarrierLevelHit;
     }
 }
