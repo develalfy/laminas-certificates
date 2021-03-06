@@ -194,12 +194,14 @@ class StandardCertificate implements CertificateInterface
 
     /**
      * @param DocumentInterface $document
+     * @return DocumentInterface[]
      */
-    public function setDocument(DocumentInterface $document): void
+    public function addDocuments(DocumentInterface $document): array
     {
-        $this->document = $document;
-    }
+        $this->documents[] = $document;
 
+        return $this->documents;
+    }
 
     /**
      * @return array
