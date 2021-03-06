@@ -51,3 +51,4 @@ You can find a PNG image attached with email, with a class diagram to help you k
 - Unittests here were written TDD.
 - I've focused on Service and Model when we talk about unittest.
 - If there is anything to discuss or ask about, don't hesitate to call me. 
+- You can check (CODE-3000) to test XML exception.
