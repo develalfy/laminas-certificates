@@ -6,12 +6,11 @@ namespace Certificate\Model;
 
 class BonusCertificate extends StandardCertificate
 {
+    protected $isBarrierLevelHit = false;
     /**
      * @var float
      */
     private $barrierLevel;
-
-    protected $isBarrierLevelHit = false;
 
     public function __construct(
         string $isin,
@@ -32,12 +31,27 @@ class BonusCertificate extends StandardCertificate
 
     public function addPrice(Price $price): array
     {
-        if ($price->getAmount() >= $this->barrierLevel)
-        {
+        if ($price->getAmount() >= $this->barrierLevel) {
             $this->isBarrierLevelHit = true;
         }
 
         return parent::addPrice($price);
+    }
+
+    /**
+     * @return float
+     */
+    public function getBarrierLevel(): float
+    {
+        return $this->barrierLevel;
+    }
+
+    /**
+     * @param float $barrierLevel
+     */
+    public function setBarrierLevel(float $barrierLevel): void
+    {
+        $this->barrierLevel = $barrierLevel;
     }
 
     /**
@@ -46,5 +60,18 @@ class BonusCertificate extends StandardCertificate
     public function isBarrierLevelHit(): bool
     {
         return $this->isBarrierLevelHit;
+    }
+
+    /**
+     * @return array
+     */
+    public function prepareToView(): array
+    {
+        $additional = [
+            'barrier_level' => $this->getBarrierLevel(),
+            'reached_barrier_level' => $this->isBarrierLevelHit()
+        ];
+
+        return parent::prepareToView() + $additional;
     }
 }

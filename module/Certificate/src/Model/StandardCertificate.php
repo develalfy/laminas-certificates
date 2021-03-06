@@ -3,7 +3,6 @@
 
 namespace Certificate\Model;
 
-
 class StandardCertificate implements CertificateInterface
 {
     /**
@@ -53,6 +52,28 @@ class StandardCertificate implements CertificateInterface
         $this->currentPrice = $currentPrice;
         $this->prices[] = $this->issuingPrice;
         $this->prices[] = $this->currentPrice;
+    }
+
+    /**
+     * @param Price $price
+     * @return Price[]
+     */
+    public function addPrice(Price $price): array
+    {
+        $this->prices[] = $price;
+        if ($price->getTimestamp() > $this->currentPrice->getTimestamp()) {
+            $this->setCurrentPrice($price);
+        }
+
+        return $this->getPrices();
+    }
+
+    /**
+     * @return Price[]
+     */
+    public function getPrices(): array
+    {
+        return $this->prices;
     }
 
     /**
@@ -152,24 +173,42 @@ class StandardCertificate implements CertificateInterface
     }
 
     /**
-     * @param Price $price
-     * @return Price[]
+     * @return array
      */
-    public function addPrice(Price $price): array
+    public function prepareToView(): array
     {
-        $this->prices[] = $price;
-        if ($price->getTimestamp() > $this->currentPrice->getTimestamp()) {
-            $this->setCurrentPrice($price);
-        }
+        $priceHistory = $this->preparePriceHistory($this->prices);
 
-        return $this->getPrices();
+        return [
+            'isin' => $this->getIsin(),
+            'trading_market_name' => $this->getTradingMarket()->getName(),
+            'trading_market_phone' => $this->getTradingMarket()->getPhone(),
+            'currency_name' => $this->getCurrency()->getName(),
+            'currency_symbol' => $this->getCurrency()->getSymbol(),
+            'issuer_name' => $this->getIssuer()->getName(),
+            'issuing_price_amount' => $this->getIssuingPrice()->getAmount(),
+            'issuing_price_currency_name' => $this->getIssuingPrice()->getCurrency()->getName(),
+            'issuing_price_currency_symbol' => $this->getIssuingPrice()->getCurrency()->getSymbol(),
+            'issuing_price_timestamp' => $this->getIssuingPrice()->getTimestamp(),
+            'current_price_amount' => $this->getCurrentPrice()->getAmount(),
+            'current_price_currency_name' => $this->getCurrentPrice()->getCurrency()->getName(),
+            'current_price_currency_symbol' => $this->getCurrentPrice()->getCurrency()->getSymbol(),
+            'current_price_timestamp' => $this->getCurrentPrice()->getTimestamp(),
+            'price_history' => $priceHistory
+        ];
     }
 
-    /**
-     * @return Price[]
-     */
-    public function getPrices(): array
+    private function preparePriceHistory(array $prices): array
     {
-        return $this->prices;
+        $pricesArray = [];
+
+        foreach ($prices as $key => $value) {
+            $pricesArray[$key]['amount'] = $value->getAmount();
+            $pricesArray[$key]['currency_name'] = $value->getCurrency()->getName();
+            $pricesArray[$key]['currency_symbol'] = $value->getCurrency()->getSymbol();
+            $pricesArray[$key]['timestamp'] = $value->getTimestamp();
+        }
+
+        return $pricesArray;
     }
 }
