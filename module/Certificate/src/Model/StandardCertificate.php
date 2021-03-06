@@ -198,6 +198,10 @@ class StandardCertificate implements CertificateInterface
         ];
     }
 
+    /**
+     * @param array $prices
+     * @return array
+     */
     private function preparePriceHistory(array $prices): array
     {
         $pricesArray = [];
