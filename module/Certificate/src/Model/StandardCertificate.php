@@ -42,7 +42,7 @@ class StandardCertificate implements CertificateInterface
     /**
      * @var DocumentInterface
      */
-    private $document;
+    protected $document;
 
     public function __construct(
         string $isin,
