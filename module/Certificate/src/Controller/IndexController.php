@@ -15,6 +15,7 @@ use Certificate\Service\RendererService;
 use Laminas\Diactoros\Response\EmptyResponse;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\XmlResponse;
+use Laminas\Http\Exception\InvalidArgumentException;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\JsonModel;
 use Laminas\View\Model\ViewModel;
@@ -66,7 +67,17 @@ class IndexController extends AbstractActionController
         } catch (\TypeError $e) {
             return $this->redirect()->toRoute('certificate');
         }
-        $xmlData = $this->rendererService->displayAsXml($certificate);
+
+        try {
+            $xmlData = $this->rendererService->displayAsXml($certificate);
+        } catch (InvalidArgumentException $e) {
+            $view = new ViewModel(['message' => $e->getMessage()]);
+
+            $view->setTemplate('error/404');
+
+            return $view;
+        }
+
         $this->response->getHeaders()->addHeaders([
             'Content-Type' => 'text/xml; charset=utf-8'
         ]);
