@@ -1,40 +1,40 @@
 <main role="main" class="container">
 
-        <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h4 class="border-bottom border-dark pb-2 mb-0">Certificate Details</h4>
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h4 class="border-bottom border-dark pb-2 mb-0">Certificate Details</h4>
 
-            <?php foreach ($certificate as $key => $value): ?>
-                <?php if ($key == 'price_history'): ?>
-                    <h4 class="border-bottom border-dark pb-2 mb-0">Price History</h4>
-                    <table class="table">
-                        <theader>
-                            <th>Amount</th>
-                            <th>Currency Name</th>
-                            <th>Currency Symbol</th>
-                            <th>TimeStamp</th>
-                        </theader>
-                        <tbody>
-                            <?php foreach ($value as $priceArr): ?>
-                                <tr>
-                                    <?php foreach ($priceArr as $priceArrKey => $priceArrValue): ?>
-                                        <?php if ($priceArrKey == 'timestamp'): ?>
-                                            <td><?= date('Y-m-d H:i:s', $priceArrValue); ?></td>
-                                        <?php else: ?>
-                                            <td><?= strtoupper($priceArrValue) ?></td>
-                                        <?php endif ?>
-                                    <?php endforeach ?>
-                                </tr>
+        <?php foreach ($certificate as $key => $value): ?>
+            <?php if ($key == 'price_history'): ?>
+                <h4 class="border-bottom border-dark pb-2 mb-0">Price History</h4>
+                <table class="table">
+                    <theader>
+                        <th>Amount</th>
+                        <th>Currency Name</th>
+                        <th>Currency Symbol</th>
+                        <th>TimeStamp</th>
+                    </theader>
+                    <tbody>
+                    <?php foreach ($value as $priceArr): ?>
+                        <tr>
+                            <?php foreach ($priceArr as $priceArrKey => $priceArrValue): ?>
+                                <?php if ($priceArrKey == 'timestamp'): ?>
+                                    <td><?= date('Y-m-d H:i:s', $priceArrValue); ?></td>
+                                <?php else: ?>
+                                    <td><?= strtoupper($priceArrValue) ?></td>
+                                <?php endif ?>
                             <?php endforeach ?>
-                        </tbody>
-                    </table>
-                    <?php continue; ?>
-                <?php endif ?>
-                <div class="media text-muted pt-3">
-                    <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                        <?= strtoupper($key) ?> <strong class="d-block text-gray-dark"><?= $value ?></strong>
-                    </p>
-                </div>
-            <?php endforeach ?>
-        </div>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+                <?php continue; ?>
+            <?php endif ?>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+                    <?= strtoupper($key) ?> <strong class="d-block text-gray-dark"><?= $value ?></strong>
+                </p>
+            </div>
+        <?php endforeach ?>
+    </div>
 
 </main>
