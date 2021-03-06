@@ -19,10 +19,11 @@ class BonusCertificate extends StandardCertificate
         Issuer $issuer,
         Price $issuingPrice,
         Price $currentPrice,
+        DocumentInterface $document,
         float $barrierLevel
     )
     {
-        parent::__construct($isin, $tradingMarket, $currency, $issuer, $issuingPrice, $currentPrice);
+        parent::__construct($isin, $tradingMarket, $currency, $issuer, $issuingPrice, $currentPrice, $document);
         $this->barrierLevel = $barrierLevel;
         if ($currentPrice->getAmount() >= $this->barrierLevel) {
             $this->isBarrierLevelHit = true;

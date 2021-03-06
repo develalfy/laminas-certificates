@@ -8,6 +8,7 @@ use Certificate\Model\Currency;
 use Certificate\Model\Issuer;
 use Certificate\Model\Price;
 use Certificate\Model\StandardCertificate;
+use Certificate\Model\TermSheetDocument;
 use Certificate\Model\TradingMarket;
 use PHPUnit\Framework\TestCase;
 
@@ -44,6 +45,7 @@ class StandardCertificateTest extends TestCase
             new Issuer('Ashraf Elalfi'),
             $initialPrices['issuing'],
             $initialPrices['current'],
+            new TermSheetDocument('http://www.orimi.com/pdf-test.pdf')
         );
 
         $prices = $certificate->addPrice($newPrices['newPrice1']);

@@ -11,6 +11,7 @@ use Certificate\Model\GuaranteeCertificate;
 use Certificate\Model\Issuer;
 use Certificate\Model\Price;
 use Certificate\Model\StandardCertificate;
+use Certificate\Model\TermSheetDocument;
 use Certificate\Model\TradingMarket;
 
 class CertificateRepository implements CertificateRepositoryInterface
@@ -45,6 +46,7 @@ class CertificateRepository implements CertificateRepositoryInterface
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1612386687),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1612386687),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf')
             ),
             'CODE-2000' => new BonusCertificate(
                 'CODE-2000',
@@ -53,6 +55,7 @@ class CertificateRepository implements CertificateRepositoryInterface
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1580767887),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1612386687),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
                 12.99
             ),
             'CODE-3000' => new GuaranteeCertificate(
@@ -62,6 +65,8 @@ class CertificateRepository implements CertificateRepositoryInterface
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1580767887),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1612386687),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
+
                 8
             ),
             'CODE-4000' => new GuaranteeCertificate(
@@ -71,6 +76,8 @@ class CertificateRepository implements CertificateRepositoryInterface
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1578089487),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1549231887),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
+
                 7
             ),
             'CODE-5000' => new StandardCertificate(
@@ -79,8 +86,10 @@ class CertificateRepository implements CertificateRepositoryInterface
                 new Currency('USD Dollar', '$'),
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1578089487),
-                new Price(200.55, new Currency('USD Dollar', '$'), 1549231887)
+                new Price(200.55, new Currency('USD Dollar', '$'), 1549231887),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
             )
+
         ];
     }
 }

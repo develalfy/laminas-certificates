@@ -8,6 +8,7 @@ use Certificate\Model\Currency;
 use Certificate\Model\Issuer;
 use Certificate\Model\Price;
 use Certificate\Model\BonusCertificate;
+use Certificate\Model\TermSheetDocument;
 use Certificate\Model\TradingMarket;
 use PHPUnit\Framework\TestCase;
 
@@ -44,6 +45,7 @@ class BonusCertificateTest extends TestCase
             new Issuer('Ashraf Elalfi'),
             $initialPrices['issuing'],
             $initialPrices['current'],
+            new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
             500.50
         );
 

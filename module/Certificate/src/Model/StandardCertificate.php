@@ -35,13 +35,23 @@ class StandardCertificate implements CertificateInterface
      */
     protected $prices = [];
 
+    /**
+     * @var array
+     */
+    protected $documents = [];
+    /**
+     * @var DocumentInterface
+     */
+    private $document;
+
     public function __construct(
         string $isin,
         TradingMarket $tradingMarket,
         Currency $currency,
         Issuer $issuer,
         Price $issuingPrice,
-        Price $currentPrice
+        Price $currentPrice,
+        DocumentInterface $document
     )
     {
         $this->isin = $isin;
@@ -52,6 +62,8 @@ class StandardCertificate implements CertificateInterface
         $this->currentPrice = $currentPrice;
         $this->prices[] = $this->issuingPrice;
         $this->prices[] = $this->currentPrice;
+        $this->document = $document;
+        $this->documents[] = $this->document;
     }
 
     /**
@@ -171,6 +183,23 @@ class StandardCertificate implements CertificateInterface
     {
         $this->currentPrice = $currentPrice;
     }
+
+    /**
+     * @return array
+     */
+    public function getDocuments(): array
+    {
+        return $this->documents;
+    }
+
+    /**
+     * @param DocumentInterface $document
+     */
+    public function setDocument(DocumentInterface $document): void
+    {
+        $this->document = $document;
+    }
+
 
     /**
      * @return array

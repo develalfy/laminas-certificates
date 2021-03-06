@@ -17,6 +17,7 @@ use Certificate\Model\Issuer;
 use Certificate\Model\IssuingPrice;
 use Certificate\Model\Price;
 use Certificate\Model\StandardCertificate;
+use Certificate\Model\TermSheetDocument;
 use Certificate\Model\TradingMarket;
 use Certificate\Repository\CertificateRepository;
 use Certificate\Service\CertificateService;
@@ -64,6 +65,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1549231887),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1549231886),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
             ),
             'CODE-2000' => new BonusCertificate(
                 'CODE-2000',
@@ -72,6 +74,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1549231287),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1559231887),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
                 12.99
             ),
             'CODE-3000' => new GuaranteeCertificate(
@@ -81,6 +84,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1549231887),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1578089487),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
                 8
             ),
             'CODE-4000' => new GuaranteeCertificate(
@@ -90,6 +94,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1549231887),
                 new Price(200.55, new Currency('USD Dollar', '$'), 1578089487),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf'),
                 7
             ),
             'CODE-5000' => new StandardCertificate(
@@ -98,7 +103,8 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
                 new Currency('USD Dollar', '$'),
                 new Issuer('Ashraf Elalfi'),
                 new Price(500.45, new Currency('USD Dollar', '$'), 1578089487),
-                new Price(200.55, new Currency('USD Dollar', '$'), 1578002487)
+                new Price(200.55, new Currency('USD Dollar', '$'), 1578002487),
+                new TermSheetDocument('http://www.orimi.com/pdf-test.pdf')
             )
         ];
     }
