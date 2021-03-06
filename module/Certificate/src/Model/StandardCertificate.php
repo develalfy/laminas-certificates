@@ -223,7 +223,8 @@ class StandardCertificate implements CertificateInterface
             'current_price_currency_name' => $this->getCurrentPrice()->getCurrency()->getName(),
             'current_price_currency_symbol' => $this->getCurrentPrice()->getCurrency()->getSymbol(),
             'current_price_timestamp' => $this->getCurrentPrice()->getTimestamp(),
-            'price_history' => $priceHistory
+            'price_history' => $priceHistory,
+            'attachments' => $this->prepareDocuments($this->getDocuments())
         ];
     }
 
@@ -243,5 +244,20 @@ class StandardCertificate implements CertificateInterface
         }
 
         return $pricesArray;
+    }
+
+    /**
+     * @param array $documents
+     * @return array
+     */
+    private function prepareDocuments(array $documents): array
+    {
+        $documentArray = [];
+
+        foreach ($documents as $key => $value) {
+            $documentArray[$key]['url'] = $value->getUrl();
+        }
+
+        return $documentArray;
     }
 }

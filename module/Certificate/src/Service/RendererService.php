@@ -44,7 +44,7 @@ class RendererService
 
         foreach ($value as $attrKey => $attrValue) {
             if (is_array($attrValue)) {
-                $price = $child->addChild('price_' . $attrKey);
+                $price = $child->addChild('element_' . $attrKey);
                 foreach ($attrValue as $priceKey => $priceValue) {
                     $price->addAttribute($priceKey, $priceValue);
                 }

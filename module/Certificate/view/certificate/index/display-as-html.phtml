@@ -29,6 +29,16 @@
                 </table>
                 <?php continue; ?>
             <?php endif ?>
+
+            <?php if ($key == 'attachments'): ?>
+                <?php foreach ($value as $item): ?>
+                    <?php foreach ($item as $attachmentKey => $attachmentValue): ?>
+                        <a href="<?= $attachmentValue ?>"><?= $attachmentValue ?></a><br>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php continue; ?>
+            <?php endif ?>
+
             <div class="media text-muted pt-3">
                 <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
                     <?= strtoupper($key) ?> <strong class="d-block text-gray-dark"><?= $value ?></strong>
