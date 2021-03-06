@@ -14,7 +14,6 @@ use Certificate\Model\BonusCertificate;
 use Certificate\Model\Currency;
 use Certificate\Model\GuaranteeCertificate;
 use Certificate\Model\Issuer;
-use Certificate\Model\IssuingPrice;
 use Certificate\Model\Price;
 use Certificate\Model\StandardCertificate;
 use Certificate\Model\TermSheetDocument;
