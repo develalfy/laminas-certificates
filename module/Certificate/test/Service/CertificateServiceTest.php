@@ -48,7 +48,7 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
 
         $actual = $this->certificateService->getAllCertificates();
 
-        $this->assertSame($certificateData, $actual);
+        $this->assertEquals($certificateData, $actual);
     }
 
     /**
@@ -121,6 +121,6 @@ class CertificateServiceTest extends AbstractHttpControllerTestCase
 
         $actual = $this->certificateService->getCertificate($certificateId);
 
-        $this->assertSame($certificateData, $actual);
+        $this->assertEquals($certificateData, $actual);
     }
 }
