@@ -12,11 +12,6 @@ use SimpleXMLElement;
 
 class RendererService
 {
-    public function displayAsHtml(CertificateInterface $certificate): ViewModel
-    {
-        return new ViewModel(['certificate' => $certificate]);
-    }
-
     public function displayAsXml(CertificateInterface $certificate)
     {
         if ($certificate instanceof GuaranteeCertificate) {

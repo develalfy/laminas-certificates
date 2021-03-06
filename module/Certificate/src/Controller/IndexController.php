@@ -54,7 +54,7 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('certificate');
         }
 
-        return $this->rendererService->displayAsHtml($certificate);
+        return new ViewModel(['certificate' => $certificate->prepareToView()]);
     }
 
     public function displayAsXmlAction()

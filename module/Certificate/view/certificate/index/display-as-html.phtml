@@ -1,97 +1,40 @@
 <main role="main" class="container">
 
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h4 class="border-bottom border-dark pb-2 mb-0">Certificate Details</h4>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                ISIN<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIsin()) ?></strong>
-            </p>
-        </div>
-    </div>
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <h4 class="border-bottom border-dark pb-2 mb-0">Certificate Details</h4>
 
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h4 class="border-bottom border-dark pb-2 mb-0">Trading Market</h4>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getTradingMarket()->getName()) ?></strong>
-            </p>
+            <?php foreach ($certificate as $key => $value): ?>
+                <?php if ($key == 'price_history'): ?>
+                    <h4 class="border-bottom border-dark pb-2 mb-0">Price History</h4>
+                    <table class="table">
+                        <theader>
+                            <th>Amount</th>
+                            <th>Currency Name</th>
+                            <th>Currency Symbol</th>
+                            <th>TimeStamp</th>
+                        </theader>
+                        <tbody>
+                            <?php foreach ($value as $priceArr): ?>
+                                <tr>
+                                    <?php foreach ($priceArr as $priceArrKey => $priceArrValue): ?>
+                                        <?php if ($priceArrKey == 'timestamp'): ?>
+                                            <td><?= date('Y-m-d H:i:s', $priceArrValue); ?></td>
+                                        <?php else: ?>
+                                            <td><?= strtoupper($priceArrValue) ?></td>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <?php continue; ?>
+                <?php endif ?>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+                        <?= strtoupper($key) ?> <strong class="d-block text-gray-dark"><?= $value ?></strong>
+                    </p>
+                </div>
+            <?php endforeach ?>
         </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Phone<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getTradingMarket()->getPhone()) ?></strong>
-            </p>
-        </div>
-    </div>
-
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h4 class="border-bottom border-dark pb-2 mb-0">Currency</h4>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrency()->getName()) ?></strong>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Symbol<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrency()->getSymbol()) ?></strong>
-            </p>
-        </div>
-    </div>
-
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h4 class="border-bottom border-dark pb-2 mb-0">Issuer</h4>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuer()->getName()) ?></strong>
-            </p>
-        </div>
-    </div>
-
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h4 class="border-bottom border-dark pb-2 mb-0">Issuing Price</h4>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Amount<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getAmount()) ?></strong>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getCurrency()->getName()) ?></strong>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Symbol<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getCurrency()->getSymbol()) ?></strong>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Date/Time<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getIssuingPrice()->getTimestamp()) ?></strong>
-            </p>
-        </div>
-    </div>
-
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h4 class="border-bottom border-dark pb-2 mb-0">Current Price</h4>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Amount<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getAmount()) ?></strong>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Name<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getCurrency()->getName()) ?></strong>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Currency Symbol<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getCurrency()->getSymbol()) ?></strong>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                Date/Time<strong class="d-block text-gray-dark"><?= $this->escapeHtml($this->certificate->getCurrentPrice()->getTimestamp()) ?></strong>
-            </p>
-        </div>
-    </div>
 
 </main>
