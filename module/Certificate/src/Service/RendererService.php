@@ -37,7 +37,7 @@ class RendererService
      * @param array $value
      * @return SimpleXMLElement
      */
-    public function prepareArrayChildren(SimpleXMLElement $xml, string $key, array $value): SimpleXMLElement
+    private function prepareArrayChildren(SimpleXMLElement $xml, string $key, array $value): SimpleXMLElement
     {
         $child = $xml->addChild($key);
 
